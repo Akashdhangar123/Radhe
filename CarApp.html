@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JS Example</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        div{
+            height: 150px;
+            padding: 10px;
+        }
+        section{
+            background:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)),url("https://media.istockphoto.com/id/1161948652/vector/straight-empty-road-through-the-countryside-green-hills-blue-sky-meadow-and-mountains.jpg?s=612x612&w=0&k=20&c=QmeqrerDHvEmnW4jcOWKauPyydDbvRY86MA20DpUqUU=");
+            background-position: center;
+            height: 300px;
+            margin-top: -33px;         
+        }
+        #car{
+            float: left;
+            height: 80px;
+            margin-top:200px;
+            position: relative;
+        }
+        #tree{
+            float: right;
+            height: 130px;
+            margin-top: 135px;
+            margin-right: 10px;
+
+        }
+        button{
+            margin: 20px 10px;
+            background-color: rgb(224, 205, 191);
+            color: rgb(197, 35, 149);
+        }
+        h1{
+            text-align: center;
+            color: rgb(153, 120, 184);
+            background-color: aquamarine;
+            font-size: 50px;
+            margin-top: 5px;
+        
+        }
+        #b2{
+            background-color: rgb(49, 134, 61);
+            height: 60px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>Car move projects</h1>
+    <section>
+    <div>
+        <img src="car.png" id="car" alt="">
+        <img src="tree.png" id="tree" alt="">
+    </div>
+</section> 
+<div id="b2">
+    <button onclick="f1()">Forward</button>
+    <button onclick="f2()">Backward</button>
+    <button onclick="f3()">Stop</button>
+    <button onclick="f4()">Reset</button>
+    <button onclick="f5()">Play Music</button>
+    <button onclick="f6()">Pause Music</button> 
+</div>
+</body>
+<script>
+    var car=document.getElementById("car");
+    var tree=document.getElementById("tree");
+    var x=0;
+    var i;
+    var w=window.innerWidth-170;
+        function f1(){
+            clearInterval(i);
+            i=setInterval(()=>{
+                if(x<w){
+                    x+=1;
+                    car.style.left=x+"px";
+                }
+                else{
+                    clearInterval(i);
+                    tree.style.transform="rotate(40deg) translate(20px,-40px)";
+                }
+            },1);
+        }
+        function f2(){
+            clearInterval(i);
+            tree.style.transform="rotate(0deg) translate(0px,0px)";
+            i=setInterval(()=>{
+                if(x>0){
+                    x-=1;
+                    car.style.left=x+"px";
+                }
+                else{
+                    clearInterval(i);
+                }
+            },1);
+        }
+        function f3(){
+            clearInterval(i);
+        }
+        function f4(){
+            clearInterval(i);
+            x=0;
+            car.style.left="0px";
+            tree.style.transform="rotate(0deg) translate(0px,0px)";
+        }
+        function resize(){
+            w=window.innerWidth-170;
+            location.reload();
+        }
+        var a = new Audio("radhe.mp3");
+        function f5(){
+            a.play();
+        }
+        function f6(){
+            a.pause();
+        }
+</script>
+</html>
